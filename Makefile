@@ -19,6 +19,7 @@ FUNCTIONS =	projection/my_mlx_pixel_put.c\
 			projection/moves/move_right.c\
 			projection/moves/move_backword.c\
 			projection/destroy_window.c\
+			projection/textures.c\
 			map_parssing/libft/ft_atoi.c\
 			map_parssing/libft/ft_strnstr.c\
 			map_parssing/libft/ft_calloc.c\

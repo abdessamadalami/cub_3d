@@ -6,26 +6,26 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:08:13 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/10/27 15:39:22 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/10/27 18:22:04 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includ/map_parssing.h"
 
-void	print_data(t_data_par *parsing)
-{
-	printf("floor_color %d \n", parsing->floor_color);
-	printf("ciling_color %d \n", parsing->ciling_color);
-	printf("north_path  %s \n", parsing->north_path);
-	printf("south_path  %s \n", parsing->south_path);
-	printf("east_path  %s \n", parsing->east_path);
-	printf("west_path  %s \n", parsing->west_path);
+// void	print_data(t_data_par *parsing)
+// {
+// 	printf("floor_color  %d \n", parsing->floor_color);
+// 	printf("ciling_color %d \n", parsing->ciling_color);
+// 	printf("north_path   %s \n", parsing->north_path);
+// 	printf("south_path   %s \n", parsing->south_path);
+// 	printf("east_path    %s \n", parsing->east_path);
+// 	printf("west_path    %s \n", parsing->west_path);
 
-	for (size_t i = 0; parsing->maze[i] != '\0'; i++)
-	{
-		printf(" %s\n", parsing->maze[i]);
-	}
-}
+// 	for (size_t i = 0; parsing->maze[i] != '\0'; i++)
+// 	{
+// 		printf(" %s\n", parsing->maze[i]);
+// 	}
+// }
 
 int	stat_color(char s, int *vergul, int *nbr, int *rgb)
 {

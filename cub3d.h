@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: orbiay <orbiay@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 15:03:50 by orbiay            #+#    #+#             */
-/*   Updated: 2022/10/19 16:37:21 by orbiay           ###   ########.fr       */
+/*   Updated: 2022/10/27 18:35:43 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 # define TRUE 1
 
+# define MOVE_PX 20
 # define RED	0XFF0000
 # define WHITE	0XFFFFFF
 # define BLACK	0X000000
@@ -36,15 +37,8 @@
 # define WALL_DIM 64.0
 # define HALF_WALL 32.0
 
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
-
-typedef struct s_parsing
-{
-	// Put your stuffs down here
-
-
-}	t_parsing;
+# define WIN_W	1920.0
+# define WIN_H	1080.0
 
 
 typedef struct s_my_mlx
@@ -56,25 +50,30 @@ typedef struct s_my_mlx
 	int		endian;
 
 	int		bpp_n;
-	int		line_len_n;
+	int		l_len_n;
 	int		endian_n;
 
 	int		bpp_s;
-	int		line_len_s;
+	int		l_len_s;
 	int		endian_s;
 
 	int		bpp_w;
-	int		line_len_w;
+	int		l_len_w;
 	int		endian_w;
 
 	int		bpp_e;
-	int		line_len_e;
+	int		l_len_e;
 	int		endian_e;
+
+	int		bpp_c;
+	int		l_len_c;
+	int		endian_c;
 
 	char	*addr_n;
 	char	*addr_s;
 	char	*addr_w;
 	char	*addr_e;
+	char	*addr_c;
 }	t_my_mlx;
 
 typedef struct s_window
@@ -82,29 +81,41 @@ typedef struct s_window
 	void		*mlx;
 	void		*window;
 	char		**map;
-	char		*north_img;
-	char		*south_img;
-	char		*east_img;
-	char		*west_img;
-	char		*north_xpm;
-	char		*south_xpm;
-	char		*east_xpm;
-	char		*west_xpm;
+	int			width;
+	int			height;
+
+	char		*n_img;
+	char		*s_img;
+	char		*e_img;
+	char		*w_img;
+
+	char		*n_xpm;
+	char		*s_xpm;
+	char		*e_xpm;
+	char		*w_xpm;
+
 	double		field_of_view;
+
 	double		x_player;
 	double		y_player;
-	double		x_endRay;
-	double		y_endRay;
+
+	double		x_endray;
+	double		y_endray;
+
 	double		distance;
 	double		corrected_distance;
+
 	int			ceilling;
 	int			floor;
 
-	double		dir_x;
-	double		dir_y;
+	double		where;
 
-	
-	t_data_par	parsing;
+	double		dst_to_projection;
+	double		projection_3d;
+	double		flo_cei;
+	char		*color;
+
+	t_data_par	*parsing;
 	t_my_mlx	my_mlx;
 }	t_mlx;
 
@@ -135,8 +146,8 @@ void	move_right(t_mlx *wind);
 */
 void	cast_rays(t_mlx *wind, double angle, int i);
 /*
-	Whenever a ray hits the wall set which interface he see's based on his position [y,x]
-	and the wall intersection[y,x]
+	Whenever a ray hits the wall set which interface
+	he see's based on his position [y,x] and the wall intersection[y,x]
 */
 char	set_directions(double w_y, double w_x, t_mlx *wind);
 /*
@@ -151,7 +162,10 @@ void	casting_3d(double distance, int i, t_mlx *mlx, char dir);
 	Whenever the user hit a key provide him wwith the move he requires
 */
 int		get_keys(int press, t_mlx	*wind);
+char	*north_texture(t_mlx *mlx, int i);
+char	*south_texture(t_mlx *mlx, int i);
+char	*east_texture(t_mlx *mlx, int i);
+char	*west_texture(t_mlx *mlx, int i);
 int		destroy_window(t_mlx *wind);
 void	my_mlx_pixel_put(t_my_mlx *data, int x, int y, int color);
-
 #endif

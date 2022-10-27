@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:25:36 by otoufah           #+#    #+#             */
-/*   Updated: 2022/10/26 11:22:08 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/10/27 18:28:36 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,7 @@ oerder of fiaileds
 */
 // dupbicated objects
 // newlines after map
-void	parse_aguments(t_mlx	*wind)
-{
-	printf("We Path -> %s\n", wind->west_img);
-    printf("No Path -> %s\n", wind->north_img);
-    printf("So Path -> %s\n", wind->south_img);
-    printf("Ea Path -> %s\n", wind->east_img);
-    printf("C Color -> %s\n", wind->east_img);
-    printf("E Color -> %s\n", wind->east_img);
-	for (int i = 0; wind->map[i];i++)
-	{
-    	printf("Map -> %s\n", wind->map[i]);
-	}
-}
+
 
 int	main(int ac, char **av)
 {
@@ -56,18 +44,14 @@ int	main(int ac, char **av)
 	t_data_par *parsing;
 
 	parsing = malloc(sizeof(t_data_par));
-	printf("omaut");
-	printf(" %s " ,av[1]);
 	ft_parsing(ac, av, parsing);
-	print_data(parsing);
-	system("leaks cub3d");
-	
-	exit(0);
+	wind.parsing = parsing;
+
 	if (ac == 2)
 	{
-		wind.map = wind.parsing.maze;
+		wind.map = parsing->maze;
 		wind.mlx = mlx_init();
-		wind.window = mlx_new_window(wind.mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
+		wind.window = mlx_new_window(wind.mlx, WIN_W, WIN_H, "Cub3D");
 		images_to_xpm(&wind);
 		get_player_position(&wind);
 		projecting_rays(&wind);

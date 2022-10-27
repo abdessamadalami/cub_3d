@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:41:06 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/10/27 15:40:00 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/10/27 17:46:19 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ void check_line(t_data_par *parsing, int index, int *player_index)
 				error_line();
 		}
 		else if (check_possiblty(line[i]))
+		{
+			printf("lamaidsf  %s \n" , line);
 			error_line();
+		}
 		i++;
 	}
 }

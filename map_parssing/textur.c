@@ -6,7 +6,7 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 18:38:01 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/10/27 15:25:42 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/10/27 18:10:37 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	texture_value(t_data_par *parsing, char *line, int *nbr )
 	{
 		free(line);
 		printf("error");
-		system("leaks cub3d");
+		// system("leaks cub3d");
 		exit(0);
 	}
 	if (!ft_strncmp(line, "SO ", 3))
