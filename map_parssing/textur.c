@@ -6,13 +6,13 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 18:38:01 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/10/26 17:40:38 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/10/27 15:25:42 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includ/map_parssing.h"
 
-char *get_path_check(char *line, char *ser)
+char	*get_path_check(char *line, char *ser)
 {
 	char	*path;
 	char	*tmp;
@@ -30,10 +30,10 @@ char *get_path_check(char *line, char *ser)
 		exit(0);
 	}
 	close(fd);
-	return line;
+	return (line);
 }
 
-void texture_value(t_data_par *parsing, char *line, int *nbr )
+void	texture_value(t_data_par *parsing, char *line, int *nbr )
 {
 	if (*nbr > 3)
 	{
@@ -42,18 +42,18 @@ void texture_value(t_data_par *parsing, char *line, int *nbr )
 		system("leaks cub3d");
 		exit(0);
 	}
-	if (!ft_strncmp(line, "SO ",3) )
-		parsing->south_path = get_path_check(line , "SO");
+	if (!ft_strncmp(line, "SO ", 3))
+		parsing->south_path = get_path_check(line, "SO");
 	else if (!ft_strncmp(line, "NO ", 3))
-		parsing->north_path = get_path_check(line , "NO");
+		parsing->north_path = get_path_check(line, "NO");
 	else if (!ft_strncmp(line, "WE ", 3))
-		parsing->west_path = get_path_check(line , "WE");
+		parsing->west_path = get_path_check(line, "WE");
 	else if (!ft_strncmp(line, "EA ", 3))
-		parsing->east_path = get_path_check(line , "EA");
+		parsing->east_path = get_path_check(line, "EA");
 	else
 	{
 		free(line);
-		return;
+		return ;
 	}
 	(*nbr)++;
 }

@@ -6,20 +6,34 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:08:13 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/10/26 22:21:59 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/10/27 15:39:22 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includ/map_parssing.h"
 
+void	print_data(t_data_par *parsing)
+{
+	printf("floor_color %d \n", parsing->floor_color);
+	printf("ciling_color %d \n", parsing->ciling_color);
+	printf("north_path  %s \n", parsing->north_path);
+	printf("south_path  %s \n", parsing->south_path);
+	printf("east_path  %s \n", parsing->east_path);
+	printf("west_path  %s \n", parsing->west_path);
 
-int stat_color(char s, int *vergul, int *nbr, int *rgb)
+	for (size_t i = 0; parsing->maze[i] != '\0'; i++)
+	{
+		printf(" %s\n", parsing->maze[i]);
+	}
+}
+
+int	stat_color(char s, int *vergul, int *nbr, int *rgb)
 {
 	if (s >= '0' && s <= '9')
 		(*nbr) = (*nbr) * 10 + s - '0';
 	else if (s == ',')
 	{
-			if ((*vergul) < 3)
+		if ((*vergul) < 3)
 			rgb[(*vergul)] = *nbr;
 		(*vergul)++;
 		(*nbr) = 0;
@@ -27,24 +41,25 @@ int stat_color(char s, int *vergul, int *nbr, int *rgb)
 	else if (s != ' ')
 	{
 		*vergul = 0;
-		return 0;
+		return (0);
 	}
-	return 1;
+	return (1);
 }
-int check_verg(char *line)
+
+int	check_verg(char *line)
 {
-	int index;
-	int vergul;
-	int nbr;
-	int c[3];
-	
+	int	index;
+	int	vergul;
+	int	nbr;
+	int	c[3];
+
 	index = 0;
 	vergul = 0;
 	nbr = 0;
 	while (line[index])
 	{
-		if(stat_color(line[index], &vergul, &nbr, c) == 0)
-			break;
+		if (stat_color(line[index], &vergul, &nbr, c) == 0)
+			break ;
 		index++;
 	}
 	if (vergul == 2 && c[0] <= 255 && c[1] <= 255 && nbr <= 255)
@@ -52,10 +67,10 @@ int check_verg(char *line)
 	return (-1);
 }
 
-int ft_get_color(char *line, char *str)
+int	ft_get_color(char *line, char *str)
 {
-	char *str_color;
-	int color;
+	char	*str_color;
+	int		color;
 
 	color = -1;
 	str_color = ft_strtrim(line, str);
@@ -65,10 +80,10 @@ int ft_get_color(char *line, char *str)
 		error_color();
 	free(line);
 	free(str_color);
-	return color;
+	return (color);
 }
 
-void 	get_color_values(t_data_par *parsing , char *line, t_index *index)
+void	get_color_values(t_data_par *parsing, char *line, t_index *index)
 {
 	if (!ft_strncmp(line, "F ", 2))
 		parsing->floor_color = ft_get_color(line, " F");

@@ -6,15 +6,11 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 17:33:53 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/10/27 15:11:28 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/10/27 15:34:53 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "./includ/map_parssing.h"
-
-
-
 // int ft_direc(char c)
 // {
 // 	if (c == 'S')
@@ -41,7 +37,7 @@ void	erros_functions(char **argv)
 int	check_file_argument(char **argv, int argc)
 {
 	int	fd;
-	
+
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
@@ -57,11 +53,11 @@ int	check_file_argument(char **argv, int argc)
 	return (fd);
 }
 
-int get_nbr_line(int fd)
+int	get_nbr_line(int fd)
 {
 	char	*line;
 	int		nbr_lin;
-	
+
 	nbr_lin = 0;
 	line = 0;
 	while (1)

@@ -6,43 +6,27 @@
 /*   By: ael-oual <ael-oual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 18:46:46 by ael-oual          #+#    #+#             */
-/*   Updated: 2022/10/27 15:06:27 by ael-oual         ###   ########.fr       */
+/*   Updated: 2022/10/27 15:37:50 by ael-oual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "./includ/map_parssing.h"
 
- int true_line(char *str)
+int	true_line(char	*str)
 {
-	int i; 
+	int	i;
+
 	i = 0;
-	
 	while (str[i] != '\0')
 	{
 		if (str[i] == '0')
-			return 1;
+			return (1);
 		i++;
 	}
 	return (0);
 }
 
-void print_data(t_data_par *parsing)
-{
-	printf("floor_color %d \n",parsing->floor_color);
-	printf("ciling_color %d \n",parsing->ciling_color);
-	printf("north_path  %s \n", parsing->north_path);
-	printf("south_path  %s \n", parsing->south_path);
-	printf("east_path  %s \n", parsing->east_path);
-	printf("west_path  %s \n", parsing->west_path);
-	
-	for (size_t i = 0; parsing->maze[i] != '\0'; i++)
-	{
-		printf(" %s\n", parsing->maze[i]);
-	}
-}
-
-int check_possiblty(char c)
+int	check_possiblty(char c)
 {
 	if (c != ' ' && c != '1' && c != '0' && c != 'S'
 		&& c != 'N' && c != 'E' && c != 'W')
@@ -50,17 +34,17 @@ int check_possiblty(char c)
 	return (0);
 }
 
-int check_possiblty_tex(char *line )
+int	check_possiblty_tex(char *line )
 {
-	if (!ft_strncmp(line, "SO ", 3) || !ft_strncmp(line, "NO ", 3) ||
-			!ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "EA ", 3))
+	if (!ft_strncmp(line, "SO ", 3) || !ft_strncmp(line, "NO ", 3)
+		|| !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "EA ", 3))
 	{
 		return (1);
 	}
 	return (0);
 }
 
-void init(t_data_par *parsing)
+void	init(t_data_par *parsing)
 {
 	parsing->north_path = 0;
 	parsing->south_path = 0;
@@ -77,9 +61,9 @@ void	free_function(char **str)
 	int	i;
 
 	i = 0;
-	if(str == NULL)
-		return;
-	while ( str[i] != 0)
+	if (str == NULL)
+		return ;
+	while (str[i] != 0)
 	{
 		free(str[i]);
 		i++;
